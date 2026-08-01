@@ -113,17 +113,18 @@
         }
         
         .polaroid-front, .polaroid-back {
-            backface-visibility: hidden;
-            -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform: translateZ(0); /* Fixes the mirroring bleed-through bug */
         }
-        
-        .polaroid-back {
-            transform: rotateY(180deg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem;
-            text-align: center;
+
+.polaroid-front {
+    z-index: 2; /* Keeps front firmly on top before flipping */
+        }
+
+.polaroid-back {
+    transform: rotateY(180deg) translateZ(0);
+    /* Removed custom flex & padding so Tailwind can handle the layout */
         }
 
         /* Scroll reveal animation classes */
