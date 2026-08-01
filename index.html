@@ -97,12 +97,16 @@
             box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
         }
 
-        /* Polaroid Flip Card */
+       /* Polaroid Flip Card */
         .polaroid-container {
             perspective: 1000px;
+            height: 20rem; /* h-80 in Tailwind */
         }
         
         .polaroid-card {
+            width: 100%;
+            height: 100%;
+            position: relative;
             transition: transform 0.8s;
             transform-style: preserve-3d;
             cursor: pointer;
@@ -113,18 +117,21 @@
         }
         
         .polaroid-front, .polaroid-back {
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    transform: translateZ(0); /* Fixes the mirroring bleed-through bug */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
         }
-
-.polaroid-front {
-    z-index: 2; /* Keeps front firmly on top before flipping */
+        
+        .polaroid-front {
+            z-index: 2; 
         }
-
-.polaroid-back {
-    transform: rotateY(180deg) translateZ(0);
-    /* Removed custom flex & padding so Tailwind can handle the layout */
+        
+        .polaroid-back {
+            transform: rotateY(180deg);
         }
 
         /* Scroll reveal animation classes */
@@ -224,6 +231,7 @@
     </header>
 
     <!-- Memories Gallery Section -->
+   <!-- Memories Gallery Section -->
     <section id="memories" class="py-20 px-4 max-w-6xl mx-auto">
         <div class="text-center mb-16 reveal">
             <h2 class="text-4xl md:text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-brand-300 via-white to-brand-500 text-glow pb-2">Memory Lane 📸</h2>
@@ -233,66 +241,47 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <!-- Polaroid 1 -->
             <div class="polaroid-container reveal">
-                <div class="polaroid-card glass-panel rounded-lg p-3 h-80 relative">
-                    <div class="polaroid-front absolute inset-0 bg-white p-3 pb-12 rounded-lg shadow-xl flex flex-col">
-                        <!-- REPLACE "photo1.jpg" with your actual image file name -->
+                <div class="polaroid-card">
+                    <div class="polaroid-front bg-white p-3 pb-12 rounded-lg shadow-xl flex flex-col">
                         <img src="photo1.jpg" alt="Memory" class="w-full h-full object-cover rounded bg-gray-200">
                         <p class="text-gray-800 text-center text-2xl mt-3 font-handwriting">That one crazy trip!</p>
                     </div>
-                   <div class="polaroid-back absolute inset-0 bg-white p-3 pb-12 rounded-lg shadow-xl flex flex-col">
-  
-  <!-- Add your NEW image for the flip-side here -->
-  <img src="photo1-back.jpg" alt="Memory Flipped" class="w-full h-full object-cover rounded bg-gray-200">
-  
-  <!-- Text below the new image -->
-  <p class="text-gray-800 text-center text-2xl mt-3 font-handwriting">The Roadtrip 🚗</p>
-  
-</div>
+                    <div class="polaroid-back bg-white p-3 pb-12 rounded-lg shadow-xl flex flex-col">
+                        <img src="photo1-back.jpg" alt="Memory Flipped" class="w-full h-full object-cover rounded bg-gray-200">
+                        <p class="text-gray-800 text-center text-2xl mt-3 font-handwriting">The Roadtrip 🚗</p>
+                    </div>
                 </div>
             </div>
 
             <!-- Polaroid 2 -->
             <div class="polaroid-container reveal" style="transition-delay: 200ms;">
-                <div class="polaroid-card glass-panel rounded-lg p-3 h-80 relative">
-                    <div class="polaroid-front absolute inset-0 bg-white p-3 pb-12 rounded-lg shadow-xl flex flex-col">
-                        <!-- REPLACE "photo2.jpg" with your actual image file name -->
+                <div class="polaroid-card">
+                    <div class="polaroid-front bg-white p-3 pb-12 rounded-lg shadow-xl flex flex-col">
                         <img src="photo2.jpg" alt="Memory" class="w-full h-full object-cover rounded bg-gray-200">
                         <p class="text-gray-800 text-center text-2xl mt-3 font-handwriting">Late night talks</p>
                     </div>
-                    <div class="polaroid-back absolute inset-0 bg-white p-3 pb-12 rounded-lg shadow-xl flex flex-col">
-  
-  <!-- Add your NEW image for the flip-side here -->
-  <img src="photo2-back.jpg" alt="Memory Flipped" class="w-full h-full object-cover rounded bg-gray-200">
-  
-  <!-- Text below the new image -->
-  <p class="text-gray-800 text-center text-2xl mt-3 font-handwriting">The Roadtrip 🚗</p>
-  
-</div>
+                    <div class="polaroid-back bg-white p-3 pb-12 rounded-lg shadow-xl flex flex-col">
+                        <img src="photo2-back.jpg" alt="Memory Flipped" class="w-full h-full object-cover rounded bg-gray-200">
+                        <p class="text-gray-800 text-center text-2xl mt-3 font-handwriting">The Roadtrip 🚗</p>
+                    </div>
                 </div>
             </div>
 
             <!-- Polaroid 3 -->
             <div class="polaroid-container reveal" style="transition-delay: 400ms;">
-                <div class="polaroid-card glass-panel rounded-lg p-3 h-80 relative">
-                    <div class="polaroid-front absolute inset-0 bg-white p-3 pb-12 rounded-lg shadow-xl flex flex-col">
-                        <!-- REPLACE "photo3.jpg" with your actual image file name -->
+                <div class="polaroid-card">
+                    <div class="polaroid-front bg-white p-3 pb-12 rounded-lg shadow-xl flex flex-col">
                         <img src="photo3.jpg" alt="Memory" class="w-full h-full object-cover rounded bg-gray-200">
                         <p class="text-gray-800 text-center text-2xl mt-3 font-handwriting">Unstoppable Duo</p>
                     </div>
-                    <div class="polaroid-back absolute inset-0 bg-white p-3 pb-12 rounded-lg shadow-xl flex flex-col">
-  
-  <!-- Add your NEW image for the flip-side here -->
-  <img src="photo3-back.jpg" alt="Memory Flipped" class="w-full h-full object-cover rounded bg-gray-200">
-  
-  <!-- Text below the new image -->
-  <p class="text-gray-800 text-center text-2xl mt-3 font-handwriting">The Roadtrip 🚗</p>
-  
-</div>
+                    <div class="polaroid-back bg-white p-3 pb-12 rounded-lg shadow-xl flex flex-col">
+                        <img src="photo3-back.jpg" alt="Memory Flipped" class="w-full h-full object-cover rounded bg-gray-200">
+                        <p class="text-gray-800 text-center text-2xl mt-3 font-handwriting">The Roadtrip 🚗</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-
     <!-- Reasons Section -->
     <section id="reasons" class="py-20 px-4 bg-black/20">
         <div class="max-w-6xl mx-auto">
